@@ -1,9 +1,8 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
-function PrimaryButton({ children }) {
-  function pressHandler() {
-    console.log('Pressed!');
-  }
+import Colors from '../constants/colors';
+
+function PrimaryButton({ children, onPress }) {
 
   return (
     <View style={styles.buttonOuterContainer}>
@@ -13,8 +12,8 @@ function PrimaryButton({ children }) {
             ? [styles.buttonInnerContainer, styles.pressed]
             : styles.buttonInnerContainer
         }
-        onPress={pressHandler}
-        android_ripple={{ color: '#640233' }} // Ripple effect need to be fixed
+        onPress={onPress}
+        android_ripple={{ color: Colors.primary600 }} // Ripple effect need to be fixed
       >
         <Text style={styles.buttonText}>{children}</Text>
       </Pressable>
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   buttonInnerContainer: {
-    backgroundColor: '#72063c',
+    backgroundColor: Colors.primary500,
     paddingVertical: 8,
     paddingHorizontal: 16,
     elevation: 2, // Shadow doesn't working with a backgroundColor
