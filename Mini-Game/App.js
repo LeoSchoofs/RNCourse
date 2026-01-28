@@ -7,6 +7,7 @@ import {
 } from 'react-native-safe-area-context'; //SafeAreaView from react-native is deprecated
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen'; //AppLoading deprecated, SplashScreen instead
+import { StatusBar } from 'expo-status-bar';
 
 import StartGameScreen from './screens/StartGameScreen';
 import GameScreen from './screens/GameScreen';
@@ -68,23 +69,24 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider> 
-      <LinearGradient 
-      colors={[Colors.primary700, Colors.accent500]} 
-      style={styles.rootScreen}
-      >
-        <ImageBackground
-          source={require('./assets/images/background.png')}
-          resizeMode='cover'
-          style={styles.rootScreen}
-          imageStyle={styles.backroungdImage}
+      <SafeAreaProvider> 
+        <StatusBar style="light"/>
+        <LinearGradient 
+        colors={[Colors.primary700, Colors.accent500]} 
+        style={styles.rootScreen}
         >
-          <SafeAreaView style={styles.rootScreen}>
-            {screen}
-          </SafeAreaView>
-        </ImageBackground>
-      </LinearGradient>
-    </SafeAreaProvider>
+          <ImageBackground
+            source={require('./assets/images/background.png')}
+            resizeMode='cover'
+            style={styles.rootScreen}
+            imageStyle={styles.backroungdImage}
+          >
+            <SafeAreaView style={styles.rootScreen}>
+              {screen}
+            </SafeAreaView>
+          </ImageBackground>
+        </LinearGradient>
+      </SafeAreaProvider>
   );
 }
 
